@@ -12,7 +12,7 @@ template<class T> struct Point {
 	T x, y;
 };
 
-class Figures{
+class Figures {
 public:
 	virtual string name() = 0;
 	virtual double area() = 0;
@@ -22,7 +22,7 @@ public:
 
 template<class T> class Circle : public Figures {
 public:
-	Circle(double R) {
+	Circle(T R) {
 		this->r = R;
 	}
 	Circle() {}
@@ -41,7 +41,7 @@ private:
 template<class T> class Rectangle :public Figures {
 public:
 	Rectangle() {}
-	Rectangle(double A, double B) {
+	Rectangle(T A, T B) {
 		this->a = A;
 		this->b = B;
 	}
@@ -49,10 +49,10 @@ public:
 		return "I am Rectangle";
 	}
 	double area() {
-		return a*b;
+		return a * b;
 	}
 	double perim() {
-		return (a+b)*2;
+		return (a + b) * 2;
 	}
 private:
 	T a, b;
@@ -61,10 +61,10 @@ private:
 template<class T> class Triangle :public Figures {
 public:
 	Triangle() {}
-	Triangle(double A, double B, double C) {
-		this->a=A;
-		this->b=B;
-		this->c=C;
+	Triangle(T A, T B, T C) {
+		this->a = A;
+		this->b = B;
+		this->c = C;
 	}
 	string name() {
 		return "I am triangle";
@@ -81,14 +81,14 @@ private:
 	T a, b, c;
 };
 
-class Poligon :public Figures {
+template<class T> class Poligon :public Figures {
 public:
 	Poligon() {}
 	void set(const char* namefile) {
-		double x, y;
+		T x, y;
 		ifstream in(namefile);
 		while (!in.eof()) {
-			Point point;
+			Point<T>point;
 			in >> x;
 			point.x = x;
 			in >> y;
@@ -117,5 +117,5 @@ public:
 		return per;
 	}
 private:
-	vector<Point>dot;
+	vector<Point<T>>dot;
 };
