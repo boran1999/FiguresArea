@@ -8,8 +8,8 @@
 
 using namespace std;
 
-struct Point {
-	double x, y;
+template<class T> struct Point {
+	T x, y;
 };
 
 class Figures{
